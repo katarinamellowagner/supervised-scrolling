@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "articles"
+    label: "Articles"
+    folder: "content/articles"
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Topic", name: "topic", widget: "select", options: ["Marketing", "Random", "Me-time", "Social Good"]}
+      - {label: "Type", name: "type", widget: "select", options: ["educational", "action", "interactive", "skill", "discover", "story"]}
+      - {label: "Cover Image", name: "image", widget: "image"}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Gallery Images", name: "gallery", widget: "list", required: false, field: {label: "Image", name: "image", widget: "image"}}
+      - {label: "Video URL", name: "video", widget: "string", required: false}
+      - {label: "Week", name: "week", widget: "string", default: "current"}
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "content/settings/homepage.yml"
+        fields:
+          - {label: "Header Image", name: "headerImage", widget: "image"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          - {label: "Intro Text", name: "intro", widget: "text"}
+          - {label: "Outro Text", name: "outro", widget: "text"}
+      
+      - label: "About Page"
+        name: "about"
+        file: "content/settings/about.yml"
+        fields:
+          - {label: "Header Image", name: "headerImage", widget: "image"}
+          - {label: "Content", name: "body", widget: "markdown"}
+      
+      - label: "Design"
+        name: "design"
+        file: "content/settings/design.yml"
+        fields:
+          - {label: "Primary Color", name: "primaryColor", widget: "color", default: "#9333ea"}
+          - {label: "Secondary Color", name: "secondaryColor", widget: "color", default: "#22c55e"}
+          - {label: "Heading Font", name: "headingFont", widget: "string", default: "system-ui, sans-serif"}
+          - {label: "Body Font", name: "bodyFont", widget: "string", default: "system-ui, sans-serif"}
